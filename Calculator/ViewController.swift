@@ -30,9 +30,11 @@ class ViewController: UIViewController {
         
         if label.text != nil {
             if startNew == true {
+                // 新的運算開始
                 label.text = "\(inputNumber)"
                 startNew = false
             } else {
+                // 運算中
                 if label.text == "0" || label.text == "+" || label.text == "-" || label.text == "*" || label.text == "/" {
                     label.text = "\(inputNumber)"
                 } else {
@@ -43,14 +45,16 @@ class ViewController: UIViewController {
         }
     }
     
+    // 加號
     @IBAction func add(_ sender: UIButton) {
         rightNowAnswer()
-        label.text = "+"
-        operation = "add"
-        performingMath = true
-        previousNumber = numberOnScreen
+        label.text = "+" // 顯示畫面
+        operation = "add" // 記錄運算符號
+        performingMath = true // 狀態運算中
+        previousNumber = numberOnScreen // 暫存前一個數字
     }
     
+    // 減號
     @IBAction func substract(_ sender: UIButton) {
         rightNowAnswer()
         label.text = "-"
@@ -59,6 +63,7 @@ class ViewController: UIViewController {
         previousNumber = numberOnScreen
     }
     
+    // 乘號
     @IBAction func multiply(_ sender: UIButton) {
         rightNowAnswer()
         label.text = "*"
@@ -67,6 +72,7 @@ class ViewController: UIViewController {
         previousNumber = numberOnScreen
     }
     
+    // 除號
     @IBAction func divide(_ sender: UIButton) {
         rightNowAnswer()
         label.text = "/"
@@ -75,6 +81,7 @@ class ViewController: UIViewController {
         previousNumber = numberOnScreen
     }
     
+    // 等號 算出結果
     @IBAction func giveMeAnswer(_ sender: UIButton) {
         if performingMath == true {
             switch operation {
@@ -107,7 +114,7 @@ class ViewController: UIViewController {
                 default: // "none"
                     label.text = "0"
             }
-            performingMath = false
+            performingMath = false // 狀態運算結束
             startNew = true
         }
     }
@@ -149,10 +156,11 @@ class ViewController: UIViewController {
         label.text = okText
     }
     
+    // ViewController 屬性
     var numberOnScreen:Double = 0
-    var previousNumber:Double = 0
-    var performingMath = false
-    var operation = "none"
+    var previousNumber:Double = 0 // 暫存雲算數字
+    var performingMath = false // 是否在運算中
+    var operation = "none" // 運算符號
     var startNew = true
     
     override func viewDidLoad() {
