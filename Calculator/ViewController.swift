@@ -9,9 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // IBOutlet
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var btnCancel: UIButton!
     
+    // IBAction
+    // 清空數字
     @IBAction func clear(_ sender: UIButton) {
         label.text = "0"
         numberOnScreen = 0
@@ -21,8 +24,9 @@ class ViewController: UIViewController {
         startNew = true
     }
     
+    // 每個數字按鈕都 connect 到這個 IBAction
     @IBAction func numbers(_ sender: UIButton) {
-        let inputNumber = sender.tag - 1
+        let inputNumber = sender.tag - 1 // 取得 按鈕的 tag屬性
         
         if label.text != nil {
             if startNew == true {
@@ -32,7 +36,7 @@ class ViewController: UIViewController {
                 if label.text == "0" || label.text == "+" || label.text == "-" || label.text == "*" || label.text == "/" {
                     label.text = "\(inputNumber)"
                 } else {
-                    label.text = label.text! + "\(inputNumber)"
+                    label.text = label.text! + "\(inputNumber)" // string 串連
                 }
             }
             numberOnScreen = Double(label.text!) ?? 0
@@ -108,9 +112,9 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    // 設定 手機狀態列顏色
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .lightContent // 白色 亮色
     }
     
     func rightNowAnswer(){
