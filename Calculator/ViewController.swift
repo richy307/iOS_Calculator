@@ -35,10 +35,11 @@ class ViewController: UIViewController {
                 startNew = false
             } else {
                 // 運算中
+                // 運算符號
                 if label.text == "0" || label.text == "+" || label.text == "-" || label.text == "*" || label.text == "/" {
                     label.text = "\(inputNumber)"
                 } else {
-                    label.text = label.text! + "\(inputNumber)" // string 串連
+                    label.text = label.text! + "\(inputNumber)" // 數字 string 串連
                 }
             }
             numberOnScreen = Double(label.text!) ?? 0
@@ -150,7 +151,9 @@ class ViewController: UIViewController {
     func makeOKNumberString(from number:Double) {
         var okText:String
         
+        // floor 去掉小數 變成整數 // Int // Double
         okText = floor(number) == number ? "\( Int(number) )": "\(number)"
+        // 取前面9個字元
         okText = okText.count >= 9 ? String(okText.prefix(9)) : okText
         
         label.text = okText
